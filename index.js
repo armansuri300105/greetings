@@ -7,7 +7,13 @@ import Name from "./models/name.js"
 
 const app = express();
 
-app.use(cors())
+const corsOptions = {
+    origin: "https://name-greetings.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 dotenv.config()
